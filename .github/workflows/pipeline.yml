@@ -18,10 +18,6 @@ jobs:
           with:
             submodules: true
 
-        - name: prepare
-          run: |
-            sudo apt install cmake make g++
-
         - name: configure
           run: cmake -S . -B build -DBUILD_TESTING=ON
 
