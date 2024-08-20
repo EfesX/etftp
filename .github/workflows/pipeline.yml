@@ -1,0 +1,31 @@
+name: cicd
+on:
+   push:
+      branches: [ "main" ]
+   pull_request:
+      branches: [ "main" ]
+      
+jobs:
+   build_job:
+      runs-on: ubuntu-latest
+      
+      steps:
+        - name: checkout
+          uses: actions/checkout@v4
+          with:
+            submodules: true
+
+        - name: prepare
+          run: |
+            sudo apt install cmake make g++
+
+        - name: configure
+          run: cmake -S . -B build -DBUILD_TESTING=ON
+
+        - name: build
+          run: |
+            cmake --build build -j $(nproc)
+
+        - name: test
+          run: |
+            ctest -VV --test-dir build/tests
