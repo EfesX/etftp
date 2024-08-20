@@ -1,0 +1,9 @@
+{
+    "port"       : 69,
+    "rootdir"    : "server",
+    "timeout"    : 5,
+    "attempts"   : 3,
+    "blksize"    : 1024,
+    "fcreate"    : false,
+    "foverwrite" : false
+}
